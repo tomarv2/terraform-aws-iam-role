@@ -1,7 +1,7 @@
 # https://github.com/Smartbrood/terraform-aws-ec2-iam-role/blob/master/README.md
 locals{
   role_name = var.name != null ? var.name : "${var.teamid}-${var.prjid}"
-  assume_role_policy = var.assume_role_policy != "" ? var.assume_role_policy : data.aws_iam_policy_document.policy_document.json
+//  assume_role_policy = var.assume_role_policy != "" ? var.assume_role_policy : data.aws_iam_policy_document.policy_document.json
 }
 
 data "aws_iam_policy_document" "policy_document" {
@@ -25,7 +25,7 @@ resource "aws_iam_role" "iam_role" {
   path                  = var.path
   description           = var.description
   force_detach_policies = var.force_detach_policies
-  assume_role_policy    = local.assume_role_policy
+  assume_role_policy    = data.databricks_aws_assume_role_policy.this.json #local.assume_role_policy
   tags                  = merge(local.shared_tags)
 }
 
