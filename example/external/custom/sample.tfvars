@@ -4,7 +4,7 @@
 #
 profile_to_use              = "demo_iam_role"
 email                       = "demo@demo.com"
-name                        = "demo-lambda-role"
+name                        = "rumse-demo-role"
 policy_arn                  = ["arn:aws:iam::123456789012:policy/demo-lambda-policy", "arn:aws:iam::aws:policy/SecretsManagerReadWrite"]
 //policy_identifier           = ["lambda.amazonaws.com"]
 //external_id                 = "123456789012"
@@ -37,5 +37,5 @@ EOF
 
 #-------------------------------------------------------------------
 # Note: Do not change teamid and prjid once set.
-teamid                      = "security"
-prjid                       = "demo-lambda-role"
+teamid                      = "rumse"
+prjid                       = "demo-role"
