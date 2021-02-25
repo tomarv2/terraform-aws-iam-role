@@ -17,6 +17,7 @@ variable "profile_to_use" {
 variable "name" {
   description = "The name of the IAM Role."
   type        = string
+  default = null
 }
 
 variable "path" {
@@ -59,6 +60,10 @@ variable "external_id" {
 
 variable "assume_role_policy" {
   default = ""
+}
+
+variable "aws_region" {
+  default = "us-west-2"
 }
 
 variable "databricks_account_id" {}

@@ -40,11 +40,15 @@ variable "force_detach_policies" {
 variable "policy_arn" {
   description = "Attaches the policies to the IAM Role."
   type        = list
-  default     = null
+  default = null
 }
 
 variable "policy_identifier" {
   default     = ["ec2.amazonaws.com"]
+}
+
+variable "role_name" {
+  default     = null
 }
 
 variable "external_id" {
@@ -56,3 +60,5 @@ variable "external_id" {
 variable "assume_role_policy" {
   default = ""
 }
+
+variable "databricks_account_id" {}
