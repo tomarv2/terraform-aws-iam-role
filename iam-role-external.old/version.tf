@@ -4,14 +4,10 @@ terraform {
     aws = {
       version                     = "3.29"
     }
-    databricks = {
-      source                  = "databrickslabs/databricks"
-      version                 = "0.3.1"
-    }
   }
 }
 
 provider "aws" {
-  profile                     = var.profile_to_use
   region                      = var.aws_region
+  profile                     = var.profile_to_use
 }

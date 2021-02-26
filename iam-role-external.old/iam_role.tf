@@ -1,24 +1,7 @@
 # https://github.com/Smartbrood/terraform-aws-ec2-iam-role/blob/master/README.md
 locals{
   role_name = var.name != null ? var.name : "${var.teamid}-${var.prjid}"
-  assume_role_policy = coalesce(var.assume_role_policy, data.aws_iam_policy_document.policy_document.json)
-  role_policy = coalesce(var.role_policy)
-}
-
-data "aws_iam_policy_document" "policy_document" {
-  statement {
-    actions             = ["sts:AssumeRole"]
-    principals {
-      type              = "Service"
-      identifiers       = var.policy_identifier
-    }
-
-    condition {
-      test     = "StringEquals"
-      variable = "sts:ExternalId"
-      values = [var.external_id]
-    }
-  }
+  assume_role_policy = var.assume_role_policy != "" ? var.assume_role_policy : data.aws_iam_policy_document.policy_document.json
 }
 
 resource "aws_iam_instance_profile" "instance_profile" {
@@ -36,12 +19,20 @@ resource "aws_iam_role" "iam_role" {
   tags                  = merge(local.shared_tags)
 }
 
+data "aws_iam_policy_document" "policy_document" {
+  statement {
+    actions             = ["sts:AssumeRole"]
+    principals {
+      type              = "Service"
+      identifiers       = var.policy_identifier
+    }
 
-resource "aws_iam_role_policy" "inline_policy" {
-  count                 = length(var.role_policy)
-  name                  = "${var.teamid}-${var.prjid}-policy"
-  role                  = aws_iam_role.iam_role.id
-  policy                = local.role_policy
+    condition {
+      test     = "StringEquals"
+      variable = "sts:ExternalId"
+      values = [var.external_id]
+    }
+  }
 }
 
 resource "aws_iam_role_policy_attachment" "managed_policy" {

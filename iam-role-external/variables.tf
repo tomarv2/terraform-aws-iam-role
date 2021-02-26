@@ -17,6 +17,7 @@ variable "profile_to_use" {
 variable "name" {
   description = "The name of the IAM Role."
   type        = string
+  default = null
 }
 
 variable "path" {
@@ -40,14 +41,11 @@ variable "force_detach_policies" {
 variable "policy_arn" {
   description = "Attaches the policies to the IAM Role."
   type        = list
+  default     = []
 }
 
 variable "policy_identifier" {
   default     = ["ec2.amazonaws.com"]
-}
-
-variable "aws_region" {
-  default     = "us-west-2"
 }
 
 variable "role_name" {
@@ -62,4 +60,13 @@ variable "external_id" {
 
 variable "assume_role_policy" {
   default = ""
+}
+
+variable "aws_region" {
+  default = "us-west-2"
+}
+
+variable "role_policy" {
+  default = null
+    description = "Is it inline or managed policy"
 }
