@@ -17,18 +17,16 @@
 
 # Terraform module for AWS IAM roles
 
-:point_right: [Role for IAM User](iam_role_user_with_without_mfa)
+:point_right: [Role for IAM User](modules/iam_role_user_with_without_mfa)
 
-:point_right: [Role for External AWS Account](iam_role_external)
+:point_right: [Role for External AWS Account](modules/iam_role_external)
 
-:point_right: [Role for Instance Profile](iam_role_instance)
-
-:point_right: [Role for Lambda]()
+:point_right: [Role for Instance Profile](modules/iam_role_instance)
 
 
 Usage
 -----
-:star: This module will create an IAM Role and its Trust Relationships policy document.
+:star: This module will create an `IAM Role` and `Trust Relationships policy` document.
 
 ## Versions
 

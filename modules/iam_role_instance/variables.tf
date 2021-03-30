@@ -14,7 +14,7 @@ variable "profile_to_use" {
 variable "name" {
   description = "The name of the IAM Role."
   type        = string
-  default = null
+  default     = null
 }
 
 variable "path" {
