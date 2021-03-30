@@ -81,3 +81,16 @@ tf -cloud aws destroy -var='teamid=foo' -var='prjid=bar'
 Please refer to examples directory [link](examples) for references.
 
 #### IAM role with Instance Profile
+```
+module "iam_role" {
+  source = "git::git@github.com:tomarv2/terraform-aws-cloudwatch.git//modules/iam_role_instance?ref=v0.0.1"
+        
+  name           = "delme"
+  profile_to_use = "iam-admin"
+  policy_arn     = ["<existing policy arn>"]
+  # ----------------------------------------------
+  # Note: Do not change teamid and prjid once set.
+  teamid = var.teamid
+  prjid  = var.prjid
+}
+```
