@@ -1,10 +1,14 @@
 resource "aws_iam_instance_profile" "default" {
+  count = var.deploy_iam_instance_profile ? 1 : 0
+
   name = format("%s-%s", local.role_name, "profile")
   role = local.role_name
   path = var.path
 }
 
 resource "aws_iam_role" "default" {
+  count = var.deploy_iam_role ? 1 : 0
+
   name                  = local.role_name
   path                  = var.path
   description           = var.description == null ? "Terraform managed: ${var.teamid}-${var.prjid}" : var.description

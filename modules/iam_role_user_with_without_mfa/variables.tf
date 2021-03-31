@@ -72,3 +72,11 @@ variable "role_type" {
   description = "Type of role: e.g. AWS, Service"
   default     = "Service"
 }
+
+variable "deploy_iam_role" {
+  default = true
+}
+
+variable "deploy_iam_instance_profile" {
+  default = true
+}

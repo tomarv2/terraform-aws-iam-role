@@ -65,3 +65,20 @@ variable "role_policy" {
   default     = null
   description = "Is it inline or managed policy"
 }
+
+variable "role_type" {
+  description = "Type of role: e.g. AWS, Service"
+  default     = "Service"
+}
+
+variable "deploy_iam_role" {
+  default = true
+}
+
+variable "deploy_iam_instance_profile" {
+  default = true
+}
+
+variable "existing_role_name" {
+  default = null
+}
