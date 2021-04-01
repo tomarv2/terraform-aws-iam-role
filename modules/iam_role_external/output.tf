@@ -1,3 +1,8 @@
+output "iam_role_name" {
+  description = "The Name of IAM Role"
+  value       = join("", aws_iam_role.default.*.name)
+}
+
 output "iam_role_arn" {
   description = "The ARN of IAM Role"
   value       = join("", aws_iam_role.default.*.arn)

@@ -61,11 +61,6 @@ variable "aws_region" {
   default = "us-west-2"
 }
 
-variable "role_policy" {
-  default     = null
-  description = "Is it inline or managed policy"
-}
-
 variable "role_type" {
   description = "Type of role: e.g. AWS, Service"
   default     = "Service"
