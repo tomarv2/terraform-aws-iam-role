@@ -83,7 +83,7 @@ Please refer to examples directory [link](examples) for references.
 #### IAM role with Instance Profile
 ```
 module "iam_role" {
-  source = "git::git@github.com:tomarv2/terraform-aws-cloudwatch.git//modules/iam_role_instance?ref=v0.0.1"
+  source = "git::git@github.com:tomarv2/terraform-aws-cloudwatch.git//modules/iam_role_instance"
         
   name           = "delme"
   profile_to_use = "iam-admin"
