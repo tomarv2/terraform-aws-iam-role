@@ -1,8 +1,10 @@
 locals {
   shared_tags = tomap(
-    "Name", "${var.teamid}-${var.prjid}",
-    "team", var.teamid,
-    "project", var.prjid
+    {
+      "Name" = "${var.teamid}-${var.prjid}",
+      "team" = var.teamid,
+      "project" = var.prjid
+    }
   )
 
   # https://github.com/Smartbrood/terraform-aws-ec2-iam-role/blob/master/README.md
