@@ -1,7 +1,7 @@
 module "iam_role" {
   source = "../../modules/iam_role_instance"
 
-  name           = "delme"
+  name           = "demo-role"
   profile_to_use = "iam-admin"
   policy_arn     = ["<existing policy arn>"]
   # ----------------------------------------------

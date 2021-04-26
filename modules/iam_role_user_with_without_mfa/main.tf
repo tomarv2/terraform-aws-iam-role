@@ -13,14 +13,32 @@ resource "aws_iam_role" "default" {
   path                  = var.path
   description           = var.description == null ? "Terraform managed: ${var.teamid}-${var.prjid}" : var.description
   force_detach_policies = var.force_detach_policies
-  assume_role_policy    = data.aws_iam_policy_document.instance.json
+  assume_role_policy    = var.mfa_required ? data.aws_iam_policy_document.with_mfa.json : data.aws_iam_policy_document.without_mfa.json
   tags                  = merge(local.shared_tags)
 }
 
-data "aws_iam_policy_document" "instance" {
+# Trust relationship policy document for user that requires MFA to be enabled.
+data "aws_iam_policy_document" "with_mfa" {
   statement {
     actions = ["sts:AssumeRole"]
-    effect  = "Allow"
+
+    principals {
+      type        = var.role_type
+      identifiers = var.policy_identifier
+    }
+
+    condition {
+      test     = "Bool"
+      variable = "aws:MultiFactorAuthPresent"
+      values   = ["true"]
+    }
+  }
+}
+
+# Trust relationship policy document for user that cannot enable MFA.
+data "aws_iam_policy_document" "without_mfa" {
+  statement {
+    actions = ["sts:AssumeRole"]
 
     principals {
       type        = var.role_type
@@ -32,6 +50,6 @@ data "aws_iam_policy_document" "instance" {
 resource "aws_iam_role_policy_attachment" "managed_policy" {
   count = length(var.policy_arn)
 
-  role       = var.existing_role_name != null ? var.existing_role_name : join("", aws_iam_role.default.*.name)
+  role       = join("", aws_iam_role.default.*.name)
   policy_arn = var.policy_arn[count.index]
 }

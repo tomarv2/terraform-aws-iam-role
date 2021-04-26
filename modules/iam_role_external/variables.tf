@@ -1,13 +1,16 @@
 variable "teamid" {
   description = "(Required) Name of the team/group e.g. devops, dataengineering. Should not be changed after running 'tf apply'"
+  type        = string
 }
 
 variable "prjid" {
   description = "(Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
+  type        = string
 }
 
 variable "profile_to_use" {
   description = "Getting values from ~/.aws/credentials"
+  type        = string
   default     = "default"
 }
 
@@ -25,6 +28,7 @@ variable "path" {
 
 variable "description" {
   description = "The description of the IAM Role."
+  type        = string
   default     = null
 }
 
@@ -41,11 +45,9 @@ variable "policy_arn" {
 }
 
 variable "policy_identifier" {
-  default = ["ec2.amazonaws.com"]
-}
-
-variable "role_name" {
-  default = ""
+  description = "List of user ARNs or Resource Names that are granted to assume the role. e.g. arn:aws:iam::123456789012:role/SuperAdmin or ec2.amazonaws.com"
+  default     = ["ec2.amazonaws.com"]
+  type        = list(any)
 }
 
 variable "external_id" {
@@ -54,26 +56,38 @@ variable "external_id" {
 }
 
 variable "assume_role_policy" {
+  description = "Assume role policy."
+
   default = ""
+  type    = string
 }
 
 variable "aws_region" {
-  default = "us-west-2"
+  description = "aws region to deploy these resources in"
+  type        = string
+  default     = "us-west-2"
 }
 
 variable "role_type" {
   description = "Type of role: e.g. AWS, Service"
+  type        = string
   default     = "Service"
 }
 
 variable "deploy_iam_role" {
-  default = true
+  description = "feature flag to deploy this resource or not"
+  type        = bool
+  default     = true
 }
 
 variable "deploy_iam_instance_profile" {
-  default = true
+  description = "feature flag to deploy this resource or not"
+  type        = bool
+  default     = true
 }
 
 variable "existing_role_name" {
-  default = null
+  description = "name of existing iam role"
+  default     = null
+  type        = string
 }
