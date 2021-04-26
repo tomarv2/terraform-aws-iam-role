@@ -54,31 +54,13 @@ variable "aws_region" {
   type        = string
   default     = "us-west-2"
 }
-/*
-variable "role_name" {
-  description = "name of iam role"
-  type        = string
-  default     = ""
-}
-
-variable "external_id" {
-  description = "External ID provided by third party."
-  type        = string
-}
-*/
 
 variable "mfa_required" {
   description = "Require MFA to assume the role."
   type        = string
   default     = "false"
 }
-/*
-variable "role_permission_boundary" {
-  description = "IAM policy ARN limiting the maximum access this role can have"
-  type        = string
-  default     = ""
-}
-*/
+
 variable "role_type" {
   description = "Type of role: e.g. AWS, Service"
   type        = string

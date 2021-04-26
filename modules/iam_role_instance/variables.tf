@@ -41,7 +41,7 @@ variable "force_detach_policies" {
 variable "policy_arn" {
   description = "Attaches the policies to the IAM Role."
   type        = list(any)
-  default = []
+  default     = []
 }
 
 variable "policy_identifier" {
@@ -51,16 +51,9 @@ variable "policy_identifier" {
 }
 
 variable "aws_region" {
-
   description = "aws region to deploy these resources in"
   type        = string
   default     = "us-west-2"
-}
-
-variable "external_id" {
-  description = "External ID provided by third party."
-  type        = string
-  default     = ""
 }
 
 variable "role_type" {
@@ -71,8 +64,8 @@ variable "role_type" {
 
 variable "existing_role_name" {
   description = "name of existing iam role"
-  default = null
-  type    = string
+  default     = null
+  type        = string
 }
 
 variable "deploy_iam_role" {

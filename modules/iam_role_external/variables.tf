@@ -49,13 +49,7 @@ variable "policy_identifier" {
   default     = ["ec2.amazonaws.com"]
   type        = list(any)
 }
-/*
-variable "role_name" {
-  description = "name of iam role"
-  type        = string
-  default     = ""
-}
-*/
+
 variable "external_id" {
   description = "External ID provided by third party."
   type        = string

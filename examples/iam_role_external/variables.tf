@@ -5,6 +5,5 @@ variable "teamid" {
 
 variable "prjid" {
   description = "(Required) Name of the project/stack e.g: mystack, nifieks, demoaci. Should not be changed after running 'tf apply'"
-
-  type = string
+  type        = string
 }
