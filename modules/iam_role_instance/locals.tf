@@ -8,4 +8,3 @@ locals {
   # https://github.com/Smartbrood/terraform-aws-ec2-iam-role/blob/master/README.md
   role_name = var.name != null ? var.name : "${var.teamid}-${var.prjid}"
 }
-
