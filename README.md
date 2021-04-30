@@ -1,5 +1,5 @@
 <p align="center">
-    <a href="https://github.com/tomarv2/terraform-aws-iam-role/actions/workflows/pre-commit.yml" alt="Precommit">
+    <a href="https://github.com/tomarv2/terraform-aws-iam-role/actions/workflows/pre-commit.yml" alt="Pre Commit">
         <img src="https://github.com/tomarv2/terraform-aws-iam-role/actions/workflows/pre-commit.yml/badge.svg?branch=main" /></a>
     <a href="https://www.apache.org/licenses/LICENSE-2.0" alt="license">
         <img src="https://img.shields.io/github/license/tomarv2/terraform-aws-iam-role" /></a>
@@ -15,18 +15,13 @@
         <img src="https://img.shields.io/twitter/follow/varuntomar2019?style=social&logo=twitter"></a>
 </p>
 
-# Terraform module for AWS IAM roles
+# Terraform module to create AWS IAM role
 
 :point_right: [Role for IAM User](modules/iam_role_user_with_without_mfa)
 
 :point_right: [Role for External AWS Account](modules/iam_role_external)
 
 :point_right: [Role for Instance Profile](modules/iam_role_instance)
-
-
-Usage
------
-:star: This module will create an `IAM Role` and `Trust Relationships policy` document.
 
 ## Versions
 
@@ -35,14 +30,22 @@ Usage
 - `main` branch: Provider versions not pinned to keep up with Terraform releases
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-aws-iam-role/tags" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-aws-iam-role" /></a> in your releases)
-
-**NOTE:**
-
-- Read more on [tfremote](https://github.com/tomarv2/tfremote)
-
+---
 ## Usage
 
-Recommended method:
+### Option 1:
+
+```
+terrafrom init
+terraform plan -var='teamid=tryme' -var='prjid=project1'
+terraform apply -var='teamid=tryme' -var='prjid=project1'
+terraform destroy -var='teamid=tryme' -var='prjid=project1'
+```
+**Note:** With this option please take care of remote state storage
+
+### Option 2:
+
+#### Recommended method (store remote state in S3 using prjid and teamid to create directory structure):
 
 - Create python 3.6+ virtual environment
 ```
@@ -77,6 +80,10 @@ tf -cloud aws apply -var='teamid=foo' -var='prjid=bar'
 ```
 tf -cloud aws destroy -var='teamid=foo' -var='prjid=bar'
 ```
+**NOTE:**
+
+- Read more on [tfremote](https://github.com/tomarv2/tfremote)
+---
 
 Please refer to examples directory [link](examples) for references.
 
