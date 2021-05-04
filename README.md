@@ -26,10 +26,10 @@
 ## Versions
 
 - Module tested for Terraform 0.14.
-- AWS provider version [3.29.0](https://registry.terraform.io/providers/hashicorp/aws/latest)
-- `main` branch: Provider versions not pinned to keep up with Terraform releases
+- AWS provider version [3.30.0](https://registry.terraform.io/providers/hashicorp/aws/latest).
+- `main` branch: Provider versions not pinned to keep up with Terraform releases.
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-aws-iam-role/tags" alt="GitHub tag">
-        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-aws-iam-role" /></a> in your releases)
+        <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-aws-iam-role" /></a>).
 ---
 ## Usage
 
@@ -106,7 +106,7 @@ module "iam_role" {
 module "iam_role" {
   source = "git::git@github.com:tomarv2/terraform-aws-iam-role.git//modules/iam_role_external"
 
-  name           = "demo-role"
+  name               = "demo-role"
   assume_role_policy = <assume role policy json>
   external_id        = <external account id>
   # ----------------------------------------------
