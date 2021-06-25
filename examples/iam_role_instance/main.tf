@@ -1,3 +1,8 @@
+provider "aws" {
+  region  = "us-west-2"
+  profile = "<aws profile to use>"
+}
+
 module "iam_role" {
   source = "../../modules/iam_role_instance"
 

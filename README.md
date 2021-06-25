@@ -25,8 +25,8 @@
 
 ## Versions
 
-- Module tested for Terraform 0.14.
-- AWS provider version [3.30.0](https://registry.terraform.io/providers/hashicorp/aws/latest).
+- Module tested for Terraform 1.0.1.
+- AWS provider version [3.47.0](https://registry.terraform.io/providers/hashicorp/aws/latest).
 - `main` branch: Provider versions not pinned to keep up with Terraform releases.
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-aws-iam-role/tags" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-aws-iam-role" /></a>).
@@ -45,7 +45,7 @@ terraform destroy -var='teamid=tryme' -var='prjid=project1'
 
 ### Option 2:
 
-#### Recommended method (store remote state in S3 using prjid and teamid to create directory structure):
+#### Recommended method (stores remote state in S3 using prjid and teamid to create directory structure):
 
 - Create python 3.6+ virtual environment
 ```
@@ -54,31 +54,41 @@ python3 -m venv <venv name>
 
 - Install package:
 ```
-pip install tfremote
+pip install tfremote --upgrade
 ```
 
 - Set below environment variables:
 ```
 export TF_AWS_BUCKET=<remote state bucket name>
-export TF_AWS_PROFILE=default
 export TF_AWS_BUCKET_REGION=us-west-2
+export TF_AWS_PROFILE=<profile from ~/.ws/credentials>
+```
+
+or
+
+- Set below environment variables:
+```
+export TF_AWS_BUCKET=<remote state bucket name>
+export TF_AWS_BUCKET_REGION=us-west-2
+export AWS_ACCESS_KEY_ID=<aws_access_key_id>
+export AWS_SECRET_ACCESS_KEY=<aws_secret_access_key>
 ```
 
 - Updated `examples` directory with required values.
 
 - Run and verify the output before deploying:
 ```
-tf -cloud aws plan -var='teamid=foo' -var='prjid=bar'
+tf -c=aws plan -var='teamid=foo' -var='prjid=bar'
 ```
 
 - Run below to deploy:
 ```
-tf -cloud aws apply -var='teamid=foo' -var='prjid=bar'
+tf -c=aws apply -var='teamid=foo' -var='prjid=bar'
 ```
 
 - Run below to destroy:
 ```
-tf -cloud aws destroy -var='teamid=foo' -var='prjid=bar'
+tf -c=aws destroy -var='teamid=foo' -var='prjid=bar'
 ```
 **NOTE:**
 
