@@ -8,12 +8,6 @@ variable "prjid" {
   type        = string
 }
 
-variable "profile_to_use" {
-  description = "Getting values from ~/.aws/credentials"
-  type        = string
-  default     = "default"
-}
-
 variable "name" {
   description = "The name of the IAM Role."
   type        = string
@@ -57,15 +51,8 @@ variable "external_id" {
 
 variable "assume_role_policy" {
   description = "Assume role policy."
-
-  default = ""
-  type    = string
-}
-
-variable "aws_region" {
-  description = "aws region to deploy these resources in"
+  default     = ""
   type        = string
-  default     = "us-west-2"
 }
 
 variable "role_type" {
