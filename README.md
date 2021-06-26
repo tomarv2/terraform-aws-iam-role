@@ -90,6 +90,7 @@ tf -c=aws apply -var='teamid=foo' -var='prjid=bar'
 ```
 tf -c=aws destroy -var='teamid=foo' -var='prjid=bar'
 ```
+
 **NOTE:**
 
 - Read more on [tfremote](https://github.com/tomarv2/tfremote)
