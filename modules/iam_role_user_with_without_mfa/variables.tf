@@ -9,12 +9,6 @@ variable "prjid" {
   type        = string
 }
 
-variable "profile_to_use" {
-  description = "Getting values from ~/.aws/credentials"
-  type        = string
-  default     = "default"
-}
-
 variable "name" {
   description = "The name of the IAM Role."
   type        = string
@@ -47,12 +41,6 @@ variable "policy_identifier" {
   description = "List of user ARNs or Resource Names that are granted to assume the role. e.g. arn:aws:iam::123456789012:role/SuperAdmin or ec2.amazonaws.com"
   type        = list(any)
   default     = ["ec2.amazonaws.com"]
-}
-
-variable "aws_region" {
-  description = "aws region to deploy these resources in"
-  type        = string
-  default     = "us-west-2"
 }
 
 variable "mfa_required" {
