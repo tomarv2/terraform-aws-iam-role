@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## [v0.0.6](https://github.com/tomarv2/terraform-aws-iam-role/releases/tag/v0.0.6) - 2021-11-16 16:50:45
+
+Release for version refs/tags/v0.0.6. Please check CHANGELOG.md for more information.
+
 ## [v0.0.5](https://github.com/tomarv2/terraform-aws-iam-role/releases/tag/v0.0.5) - 2021-10-18 17:10:42
 
 Release for version refs/tags/v0.0.5. Please check CHANGELOG.md for more information.
