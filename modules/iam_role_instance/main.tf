@@ -13,11 +13,13 @@ resource "aws_iam_role" "default" {
   path                  = var.path
   description           = var.description == null ? "Terraform managed: ${var.teamid}-${var.prjid}" : var.description
   force_detach_policies = var.force_detach_policies
-  assume_role_policy    = data.aws_iam_policy_document.instance.json
+  assume_role_policy    = var.assume_role_policy != null ? var.assume_role_policy : join("", data.aws_iam_policy_document.instance.*.json)
   tags                  = merge(local.shared_tags)
 }
 
 data "aws_iam_policy_document" "instance" {
+  count = var.deploy_iam_role ? 1 : 0
+
   statement {
     actions = ["sts:AssumeRole"]
     effect  = "Allow"
@@ -30,7 +32,7 @@ data "aws_iam_policy_document" "instance" {
 }
 
 resource "aws_iam_role_policy_attachment" "managed_policy" {
-  count = length(var.policy_arn)
+  count = var.deploy_iam_role ? length(var.policy_arn) : 0
 
   role       = var.existing_role_name != null ? var.existing_role_name : join("", aws_iam_role.default.*.name)
   policy_arn = var.policy_arn[count.index]

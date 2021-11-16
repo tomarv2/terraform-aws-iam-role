@@ -67,3 +67,9 @@ variable "deploy_iam_instance_profile" {
   type        = bool
   default     = true
 }
+
+variable "assume_role_policy" {
+  description = "Trust relationship policy"
+  default     = null
+  type        = string
+}
