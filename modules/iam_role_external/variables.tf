@@ -47,6 +47,7 @@ variable "policy_identifier" {
 variable "external_id" {
   description = "External ID provided by third party."
   type        = string
+  default     = ""
 }
 
 variable "assume_role_policy" {
