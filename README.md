@@ -15,16 +15,10 @@
 
 ## Terraform module for AWS IAM role
 
-:point_right: [Role for IAM User](modules/iam_role_user_with_without_mfa)
-
-:point_right: [Role for External AWS Account](modules/iam_role_external)
-
-:point_right: [Role for Instance Profile](modules/iam_role_instance)
-
 ### Versions
 
 - Module tested for Terraform 1.0.1.
-- AWS provider version [3.74](https://registry.terraform.io/providers/hashicorp/aws/latest).
+- AWS provider version [4.35](https://registry.terraform.io/providers/hashicorp/aws/latest).
 - `main` branch: Provider versions not pinned to keep up with Terraform releases.
 - `tags` releases: Tags are pinned with versions (use <a href="https://github.com/tomarv2/terraform-aws-iam-role/tags" alt="GitHub tag">
         <img src="https://img.shields.io/github/v/tag/tomarv2/terraform-aws-iam-role" /></a>).
@@ -92,31 +86,29 @@ tf -c=aws destroy -var='teamid=foo' -var='prjid=bar'
 **Note:** Read more on [tfremote](https://github.com/tomarv2/tfremote)
 Please refer to examples directory [link](examples) for references.
 
-#### IAM role with Instance Profile
-```
-module "iam_role" {
-  source = "git::git@github.com:tomarv2/terraform-aws-iam-role.git//modules/iam_role_instance"
+<!-- BEGIN_TF_DOCS -->
+## Requirements
 
-  name           = "demo-role"
-  policy_arn     = ["<existing policy arn>"]
-  # ----------------------------------------------
-  # Note: Do not change teamid and prjid once set.
-  teamid = var.teamid
-  prjid  = var.prjid
-}
-```
+No requirements.
 
-#### IAM role with External account
-```
-module "iam_role" {
-  source = "git::git@github.com:tomarv2/terraform-aws-iam-role.git//modules/iam_role_external"
+## Providers
 
-  name               = "demo-role"
-  assume_role_policy = <assume role policy json>
-  external_id        = <external account id>
-  # ----------------------------------------------
-  # Note: Do not change teamid and prjid once set.
-  teamid = var.teamid
-  prjid  = var.prjid
-}
-```
+No providers.
+
+## Modules
+
+No modules.
+
+## Resources
+
+No resources.
+
+## Inputs
+
+No inputs.
+
+## Outputs
+
+No outputs.
+<!-- END_TF_DOCS -->
+
