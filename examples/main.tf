@@ -14,9 +14,9 @@ provider "aws" {
 module "iam_role" {
   source = "../"
 
-  roles_config = {
+  config = {
     "demo-role" = {
-      policy_arn = "arn:aws:iam::123456789012:policy/demo-policy"
+      policy_arn         = "arn:aws:iam::123456789012:policy/demo-policy"
       assume_role_policy = <<-EOF
         {
             "Version": "2012-10-17",
@@ -43,8 +43,8 @@ module "iam_role" {
             ]
         }
         EOF
-      role_type = "Service"
-      policy_identifier = ["lambda.amazonaws.com"]
+      role_type          = "Service"
+      policy_identifier  = ["lambda.amazonaws.com"]
     }
   }
   # ----------------------------------------------
