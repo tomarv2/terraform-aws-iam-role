@@ -1,5 +1,5 @@
 resource "aws_iam_instance_profile" "this" {
-  for_each = var.config != null ? var.config : {}
+  for_each = var.config
 
   name = each.key
   role = each.key
@@ -36,7 +36,7 @@ data "aws_iam_policy_document" "instance" {
 }
 
 resource "aws_iam_role_policy_attachment" "managed_policy" {
-  for_each = var.config != null ? var.config : {}
+  for_each = var.config
 
   role       = each.key
   policy_arn = each.value.policy_arn
